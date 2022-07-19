@@ -14,11 +14,6 @@ inquirer
       message: "Description:",
       name: "description",
     },
-    // {
-    //   type: "input",
-    //   message: "Table of Contents:",
-    //   name: "tableOfContents",
-    // },
     {
       type: "input",
       message: "Installation instructions:",
