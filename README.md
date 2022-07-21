@@ -1,6 +1,6 @@
-   # Andrews Fantastico Readme V1 none
+   # Andrew Super Cool Readme Gen [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
    ## Description
-   A readme generator for the common man (me)
+   An easy readme generator
    ## Table of Contents
 -[Installation](#installation)
 
@@ -14,13 +14,13 @@
 
 -[Questions](#questions)
    ## Installation
-   blah
+   run NPM I then node index.js
    ## Usage
-   blah
+   Follow onscreen prompts
    ## License 
-   none
+   https://opensource.org/licenses/Apache-2.0
    ## Credits 
-   blah
+   none
    ## Tests 
    none
    ## Questions 
