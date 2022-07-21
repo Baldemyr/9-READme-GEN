@@ -33,7 +33,7 @@ inquirer
       type: "list",
       message: "License:",
       name: "license",
-      choices: ["MIT", "Apache 2.0", "MPL 2.0", "GPL v3", "None"],
+      choices: ["MIT", "Mozilla", "Apache", "Eclipse", "None"],
     },
     {
       type: "input",

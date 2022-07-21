@@ -1,72 +1,61 @@
-const badge = [
-  {
-    name: "MIT",
-    link: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
-    desc: "The MIT License is a permissive free software license originating at the Massachusetts Institute of Technology (MIT) in the late 1980s. As a permissive license, it puts only very limited restriction on reuse and has, therefore, high license compatibility.",
-  },
-  {
-    name: "Apache 2.0",
-    link: "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
-    desc: "Under this license, users can: Use the code commercially: Companies can include the licensed code in proprietary software that they then sell to customers.",
-  },
-  {
-    name: "MPL 2.0",
-    link: "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)",
-    desc: "The MPL is a simple copyleft license. The MPL's 'file-level' copyleft is designed to encourage contributors to share modifications they make to your code, while still allowing them to combine your code with code under other licenses (open or proprietary) with minimal restrictions.",
-  },
-  {
-    name: "GPL v3",
-    link: "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",
-    desc: "Like the GPL v2, GPL 3 is a strong copyleft license, meaning that any copy or modification of the original code must also be released under the GPL v3. In other words, you can take the GPL 3'd code, add to it or make major changes, then distribute your version.",
-  },
-];
+
 // TODO: Create a function that returns a license badge based on which license is passed in
+
+const Choice = require("inquirer/lib/objects/choice");
+
 // If there is no license, return an empty string
-function renderLicenseBadge(corpbadge) {
-  for (let i = 0; i < badge.length; i++) {
-    if (corpbadge.license == badge[i].name) {
-      return corpbadge.license;
-    } else {
-      return "none";
-    }
+function renderLicenseBadge(license) {
+  if (license === "MIT") {
+    return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
+  } else if (license === "Mozilla") {
+    return `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`;
+  } else if (license === "Apache") {
+    return `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
+  } else if (license === "Eclipse") {
+    return `[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)`;
+  } else {
+    return `("Please enter a valid license")`;
   }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(corpbadge) {
-  for (let i = 0; i < badge.length; i++) {
-    if (corpbadge.license == badge[i].name) {
-      return badge[i].link;
-    } else {
-      return "none";
-    }
+function renderLicenseLink(license) {
+  if (license ==="MIT") {
+    return `https://opensource.org/licenses/MIT`;
+  } else if (license === "Mozilla") {
+    return `https://opensource.org/licenses/MPL-2.0`;
+  } else if (license === "Apache") {
+    return `https://opensource.org/licenses/Apache-2.0`;
+  } else if (license === "Eclipse") {
+    return `https://opensource.org/licenses/EPL-2.0`;
+  } else {
+    return `("Please enter a valid license)`;
   }
+
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(corpbadge) {
-  for (let i = 0; i < badge.length; i++) {
-    if (corpbadge.license == badge[i].name) {
-      return (
-        renderLicenseBadge(corpbadge) +
-        "\n" +
-        renderLicenseLink(corpbadge) +
-        "\n" +
-        badge[i].desc
-      );
-    } else {
-      return "none";
-    }
+function renderLicenseSection(license) {
+  if (license ==="MIT") {
+    return `This application is licensed by MIT`;
+  } else if (license === "Mozilla") {
+    return `This application is licensed by Mozilla`;
+  } else if (license === "Apache") {
+    return `This application is licensed by Apache`;
+  } else if (license === "Eclipse") {
+    return `This application is licensed by Apache`;
+  } else {
+    return `("Please enter a valid license)`;
   }
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(response) {
-  return `   # ${response.title} ${renderLicenseLink(response)}
+function generateMarkdown(mystuff) {
+  return `   # ${mystuff.title} ${renderLicenseBadge(mystuff.license)}
    ## Description
-   ${response.description}
+   ${mystuff.description}
    ## Table of Contents
 -[Installation](#installation)\n
 -[Usage](#usage)\n
@@ -75,19 +64,19 @@ function generateMarkdown(response) {
 -[Tests](#tests)\n
 -[Questions](#questions)
    ## Installation
-   ${response.install}
+   ${mystuff.install}
    ## Usage
-   ${response.usage}
+   ${mystuff.usage}
    ## License 
-   ${renderLicenseSection(response)}
+   ${renderLicenseLink(mystuff.license)}
    ## Credits 
-   ${response.credits}
+   ${mystuff.credits}
    ## Tests 
-   ${response.tests}
+   ${mystuff.tests}
    ## Questions 
-   Email: ${response.questions}\n
+   Email: ${mystuff.questions}\n
    ## GitHub User 
-   ${response.gitHub}: https://github.com/${response.gitHub}
+   ${mystuff.gitHub}: https://github.com/${mystuff.gitHub}
 
 
 
